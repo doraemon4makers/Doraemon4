@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - diamond
+  - Ground
+  - deface
+  - Enemy2
+  - Enemy
+  - Fly
+  - Gun_Weapon
+  - ColdWeapon
+  - HotWeapon
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Player
+  - Emeny
+  - EmenyTrigger
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: background_hill
+    uniqueID: 767740325
+    locked: 1
+  - name: background_tree
+    uniqueID: 199732201
+    locked: 1
+  - name: Default
+    uniqueID: 0
+    locked: 1
+  - name: Foreground
+    uniqueID: 108618553
+    locked: 1

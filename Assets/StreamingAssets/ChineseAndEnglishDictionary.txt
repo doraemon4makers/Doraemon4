@@ -1,0 +1,2 @@
+﻿BoatIns:{"chineseName":"船","englishName":"boat"}
+RobotIns:{"chineseName":"机器人","englishName":"robot"}
