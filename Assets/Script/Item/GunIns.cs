@@ -28,7 +28,7 @@ public class GunIns : GroupableItem
         base.Start();
 
         //SetEnglishName("gun");
-        ReadWordDictionary.SetChineseAndEnglishName(this);
+        ItemInfoHelper.SetNames(this);
 
         MissionSystem1.UpdateMission("M1");
 

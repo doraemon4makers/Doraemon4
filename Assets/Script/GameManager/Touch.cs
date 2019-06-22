@@ -68,12 +68,12 @@ public class Touch : MonoBehaviour,IPointerClickHandler,IDragHandler,IEndDragHan
             rigidbody.freezeRotation = true;
         }
 
-       // Debug.Log(target.name);
+        // Debug.Log(target.name);
 
         //
-        if(target!=null&& target.tag == "Player")
+        if (target != null && target.tag == "Player")
         {
-            item.Use(target.transform.Find("gun"));
+            //item.Use(target.transform.Find("gun"));
         }
 
         // 组 合 

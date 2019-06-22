@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
 
     //0作为STATE_PLAYIN中的常量
     public const int STATE_PLAYING = 0;
-    
+
     public const int STATE_SEARCH = 1;
     public const int STATE_INPUT = 2;
     public const int STATE_PAUSE = 3;
@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour
     public static Transform player;
     //存储父对象位置变量
     public Transform parent;
+    private static List<Item> sceneItems = new List<Item>();
+    public static List<Item> SceneItems { get { return sceneItems; } }
     //存储分数
     private int score;
 
@@ -31,7 +33,8 @@ public class GameController : MonoBehaviour
         //？？
         instance = this;
         Item.InitItemDict();
-        ReadWordDictionary.ReadDictionaryText();
+        //ItemInfoHelper.ReadItemInfoDictionaryText();
+        //ItemInfoHelper.ReadItemTypeIconPathText();
         Debug.Log("Awake");
     }
 
@@ -234,5 +237,26 @@ public class GameController : MonoBehaviour
         score = score + amount;
         //加完分数后执行 UIManager下的ins 的OnScoreChanged 分数变换方法
         UIManager.ins.OnScoreChanged(score);
+    }
+
+    public static void AddItem(Item ins)
+    {
+        if (sceneItems.Contains(ins))
+        {
+            sceneItems.Add(ins);
+        }
+    }
+
+    public static void RemoveItem(Item ins)
+    {
+        if (sceneItems.Contains(ins))
+        {
+            sceneItems.Remove(ins);
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        Backpack.SaveFoundItemInfos();
     }
 }

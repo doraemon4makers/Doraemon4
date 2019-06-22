@@ -1,0 +1,3 @@
+﻿BoatIns:{"itemID":"1","itemType":"Vehicle","itemIconPath":"","spritePath":"","chineseName":"船","englishName":"boat","summary":"船","storeUrl":"http://www.baidu.com"}
+RobotIns:{"itemID":"2","itemType":"Vehicle","itemIconPath":"","spritePath":"","chineseName":"机器人","englishName":"robot","summary":"机器人","storeUrl":"http://www.baidu.com"}
+GunIns:{"itemID":"3","itemType":"Item","itemIconPath":"","spritePath":"","chineseName":"枪","englishName":"gun","summary":"枪","storeUrl":"http://www.baidu.com"}

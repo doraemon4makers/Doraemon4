@@ -33,9 +33,9 @@ public class ChooseUI : MonoBehaviour,IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button != PointerEventData.InputButton.Left) return;
+        //if (eventData.button != PointerEventData.InputButton.Left) return;
 
-        if(GameController.state == GameController.STATE_PLAYING)
+        if(GameController.state == GameController.STATE_PLAYING && eventData.button == PointerEventData.InputButton.Left)
         {
             if(groupable.ShouldShowUI)
             {

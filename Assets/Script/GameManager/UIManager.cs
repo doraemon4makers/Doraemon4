@@ -50,6 +50,8 @@ public class UIManager : MonoBehaviour
 
     public GameObject frontPanel;
 
+    public GameObject backpackPanel;
+
     public GameObject Canvas;
 
     public Text[] scoreText;
@@ -149,12 +151,16 @@ public class UIManager : MonoBehaviour
 
     public void OnQuitBtnClicked()
     {
+        Debug.Log("Do OnQuitBtnClicked");
+        Backpack.SaveFoundItemInfos();
         Application.Quit();
     }
 
 
     public void OnQuitClicked()
     {
+        Debug.Log("Do OnQuitClicked");
+        Backpack.SaveFoundItemInfos();
         SceneManager.LoadScene(0);
     }
 
@@ -403,5 +409,15 @@ public class UIManager : MonoBehaviour
 
         // 显示结束，隐藏血条
         SetCurrentHp(hpIcons_Enemy, 0);
+    }
+
+    public void OpenBackpack()
+    {
+        backpackPanel.SetActive(true);
+    }
+
+    public void CloseBackpack()
+    {
+        backpackPanel.SetActive(false);
     }
 }

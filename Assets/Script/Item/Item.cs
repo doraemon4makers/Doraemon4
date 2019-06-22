@@ -69,13 +69,21 @@ public class Item : MonoBehaviour, IHasID, IDamagable
 
     }
 
+    private void Awake()
+    {
+        Debug.Log(GetType().Name + " instantiated");
+        GameController.AddItem(this);
+        Backpack.FoundItemInfo(this);
+        Illustrative.Unlock(this);
+    }
+
     protected virtual void Start()
     {
         //oldColor = GetComponent<SpriteRenderer>().color;
         hpBarPoint = transform.Find("HpBarPoint");
         CurrentHp = maxHp;
         debris = Resources.Load<GameObject>("Prefabs/Debris");
-        ReadWordDictionary.SetChineseAndEnglishName(this);
+        ItemInfoHelper.SetNames(this);
     }
 
     public virtual void Use(Transform target)
@@ -118,5 +126,10 @@ public class Item : MonoBehaviour, IHasID, IDamagable
             Instantiate(debris, gameObject.transform.position, Quaternion.identity);
 
         }
+    }
+
+    private void OnDestroy()
+    {
+        GameController.RemoveItem(this);
     }
 }

@@ -42,6 +42,7 @@ public class InputFieldTest : MonoBehaviour
         objIns.transform.position = GameObject.FindWithTag("Player").transform.position + Vector3.up * 3+new Vector3(0,0,-1);
 
         lastObj = objIns;
+        EventManager.ExecuteEvent("Instantiated", objIns);
 
         InputPanel.SetActive(false);
     }
