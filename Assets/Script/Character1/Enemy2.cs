@@ -172,9 +172,10 @@ public class Enemy2 : Character1
         foreach(Collider2D c in cols)
         {
             //玩家1类 的玩家变量 获得玩家1的子对象
-            Play1 player = c.GetComponentInChildren<Play1>();
+            //Play1 player = c.GetComponentInChildren<Play1>();
+            Player player = c.GetComponentInChildren<Player>();
             //如果玩家
-            if(player)
+            if (player)
             {
                 // 返回true
                 return true;

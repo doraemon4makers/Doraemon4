@@ -182,10 +182,6 @@ public class BookPro : MonoBehaviour
         if (isLoop)
         {
             currentPaper = 2;
-            //papers[currentPaper - 1].Back = Instantiate(papers[currentPaper].Back);
-            //papers[currentPaper - 1].Front = Instantiate(papers[currentPaper].Front);
-            papers[currentPaper - 2].Back = Instantiate(papers[currentPaper - 1].Back);
-            papers[currentPaper - 1].Front = Instantiate(papers[currentPaper].Front);
         }
         int previousPaper = pageDragging ? currentPaper - 2 : currentPaper - 1;
 
@@ -282,7 +278,10 @@ public class BookPro : MonoBehaviour
             
         }
         #endregion
-        if (isLoop) currentPaper = 2;
+        if (isLoop)
+        {
+            currentPaper = 2;
+        }
     }
 
   
@@ -642,7 +641,6 @@ public class BookPro : MonoBehaviour
         return c;
     }
     #endregion
-
 }
 [Serializable]
 public class Paper

@@ -99,9 +99,10 @@ public class Player2 : Player, IHasID, IDamagable, IGroupable
         //ui挂找到GameUI身上的的物体与UIManager类上的组件
         ui = GameObject.Find("GameUI").GetComponent<UIManager>();
 
-        ui.ChangePlayerHp(currentHp, maxHp, hpBarPoint);
-
         hpBarPoint = transform.Find("HpBarPoint");
+        //ui.ChangePlayerHp(currentHp, maxHp, hpBarPoint);
+        UIManager.ins.ChangePlayerHp(currentHp, maxHp, hpBarPoint);
+
 
         //SetEnglishName("Art I ");
         //ReadWordDictionary.SetChineseAndEnglishName(this);
@@ -288,6 +289,7 @@ public class Player2 : Player, IHasID, IDamagable, IGroupable
         //现有血量= 现有血量-我的护甲的计算伤害（参数为：伤害值）
         CurrentHp -= myArmor.CalculateDamage(damageValue);
         //UI控制器下的ins变量的更新HP伤害值（参数为现有HP除以/最大HP）——为何要这么除
+        Debug.Log("hpBarPoint = " + hpBarPoint);
         UIManager.ins.ChangePlayerHp(currentHp, maxHp, hpBarPoint);
 
 

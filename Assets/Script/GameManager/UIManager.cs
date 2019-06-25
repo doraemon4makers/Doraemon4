@@ -337,7 +337,7 @@ public class UIManager : MonoBehaviour
         SetMaxHp(hpIcons_Player, maxHp);
         SetCurrentHp(hpIcons_Player, currentHp);
 
-        StartCoroutine(HpFollow());
+        StartCoroutine(HpFollow(hpIcons_Player));
     }
 
     public void ChangeEnemyHp(int currentHp, int maxHp, Transform targetTrans)
@@ -348,7 +348,7 @@ public class UIManager : MonoBehaviour
         SetMaxHp(hpIcons_Enemy, maxHp);
         SetCurrentHp(hpIcons_Enemy, currentHp);
 
-        StartCoroutine(HpFollow());
+        StartCoroutine(HpFollow(hpIcons_Enemy));
     }
 
     private void SetMaxHp(Image[] hpIcons, int maxHp)
@@ -387,7 +387,7 @@ public class UIManager : MonoBehaviour
     }
 
     // 添加血条跟踪的游戏对象参数
-    IEnumerator HpFollow()
+    IEnumerator HpFollow(Image[] hpIcons)
     {
         float timer = 0;
 
@@ -400,7 +400,7 @@ public class UIManager : MonoBehaviour
                 Vector3 screenPos = Camera.main.WorldToScreenPoint(hpFollowTarget.position) / GetScreenSizeRatio();
 
                 // hpIcons_Enemy改为根据参数从字典中获取
-                RectTransform rectParent = hpIcons_Enemy[0].transform.parent as RectTransform;
+                RectTransform rectParent = hpIcons[0].transform.parent as RectTransform;
                 rectParent.anchoredPosition = screenPos;
             }
 
@@ -408,7 +408,7 @@ public class UIManager : MonoBehaviour
         }
 
         // 显示结束，隐藏血条
-        SetCurrentHp(hpIcons_Enemy, 0);
+        SetCurrentHp(hpIcons, 0);
     }
 
     public void OpenBackpack()

@@ -9,7 +9,8 @@ public class Border : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponentInChildren<Play1>())
+        //if (collision.GetComponentInChildren<Play1>())
+        if (collision.GetComponentInChildren<Player>())
         {
             transform.GetComponentInParent<CameraFollower>().Move(dir);
         }

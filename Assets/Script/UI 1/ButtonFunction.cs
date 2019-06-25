@@ -59,20 +59,34 @@ public class ButtonFunction : MonoBehaviour
         }
     }
 
+    private static BookPro bookPro;
+    private BookPro BookProBehaviour
+    {
+        get
+        {
+            if (bookPro == null)
+            {
+                bookPro = IllustrativePanel.GetComponent<IllustrativeUI>().bookPro;
+            }
+            return bookPro;
+        }
+    }
+
     private const string ITEM_INFO_PANEL_NAME = "ItemInfoPanel";
     private static GameObject itemInfoPanel;
     private GameObject ItemInfoPanel
     {
         get
         {
-            if (itemInfoPanel == null)
-            {
-                Transform tempTrans = RootCanavs.transform.Find(ITEM_INFO_PANEL_NAME);
-                if(tempTrans != null)
-                {
-                    itemInfoPanel = tempTrans.gameObject;
-                }
-            }
+            //if (itemInfoPanel == null)
+            //{
+            //    Transform tempTrans = RootCanavs.transform.Find(ITEM_INFO_PANEL_NAME);
+            //    if(tempTrans != null)
+            //    {
+            //        itemInfoPanel = tempTrans.gameObject;
+            //    }
+            //}
+            itemInfoPanel = BookProBehaviour.papers[BookProBehaviour.CurrentPaper - 1].Back;
             return itemInfoPanel;
         }
     }
@@ -83,14 +97,15 @@ public class ButtonFunction : MonoBehaviour
     {
         get
         {
-            if(simpleInfoPanel == null)
-            {
-                Transform tempTrans = RootCanavs.transform.Find(SIMPLE_INFO_PANEL_NAME);
-                if (tempTrans != null)
-                {
-                    simpleInfoPanel = tempTrans.gameObject;
-                }
-            }
+            //if(simpleInfoPanel == null)
+            //{
+            //    Transform tempTrans = RootCanavs.transform.Find(SIMPLE_INFO_PANEL_NAME);
+            //    if (tempTrans != null)
+            //    {
+            //        simpleInfoPanel = tempTrans.gameObject;
+            //    }
+            //}
+            simpleInfoPanel = BookProBehaviour.papers[BookProBehaviour.CurrentPaper].Front;
             return simpleInfoPanel;
         }
     }
@@ -161,6 +176,14 @@ public class ButtonFunction : MonoBehaviour
         }
     }
 
+    public void OpenFullInfoPanel()
+    {
+        if(FullInfoPanel != null && !FullInfoPanel.activeSelf)
+        {
+            FullInfoPanel.SetActive(true);
+        }
+    }
+
     public void SetFullInfoPanelItemInfo(ItemButton button)
     {
         FullInfoUI fullInfo = FullInfoPanel.GetComponent<FullInfoUI>();
@@ -193,9 +216,13 @@ public class ButtonFunction : MonoBehaviour
         //    }
         //}
 
-        if (SimpleInfoPanel != null && SimpleInfoPanel.activeSelf)
+        //if (SimpleInfoPanel != null && SimpleInfoPanel.activeSelf)
+        //{
+        //    SimpleInfoPanel.transform.Find("Content").gameObject.SetActive(false);
+        //}
+        foreach(Paper paper in BookProBehaviour.papers)
         {
-            SimpleInfoPanel.SetActive(false);
+            paper.Front.transform.Find("Content").gameObject.SetActive(false);
         }
         Image image = SimpleInfoPanel.transform.GetComponentInChildren<Image>(true);
         if (button != null && image != null)
@@ -206,10 +233,10 @@ public class ButtonFunction : MonoBehaviour
                 image.sprite = sprite;
                 if (SimpleInfoPanel != null && !SimpleInfoPanel.activeSelf)
                 {
-                    SimpleInfoPanel.SetActive(true);
+                    //SimpleInfoPanel.SetActive(true);
+                    SimpleInfoPanel.transform.Find("Content").gameObject.SetActive(true);
                 }
             }
         }
-
     }
 }
